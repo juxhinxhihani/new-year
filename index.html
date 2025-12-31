@@ -6,13 +6,14 @@
   <title>Gëzuar Vitin e Ri | Happy New Year</title>
   <style>
     :root {
-      color-scheme: dark;
+      color-scheme: light;
       font-family: "Segoe UI", "Inter", system-ui, sans-serif;
-      --bg: #070812;
-      --panel: rgba(255, 255, 255, 0.08);
-      --accent: #ffd166;
-      --accent-2: #5ef2ff;
-      --muted: rgba(255, 255, 255, 0.7);
+      --bg: #f4f6fb;
+      --panel: #ffffff;
+      --accent: #1f7ae0;
+      --accent-2: #f6c453;
+      --muted: #5f6b7a;
+      --border: #e4e8ef;
     }
 
     * {
@@ -23,73 +24,23 @@
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at top, #1b1d3d 0%, #0b0d1f 38%, var(--bg) 70%);
-      color: #f8f7ff;
+      background: var(--bg);
+      color: #0f172a;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      overflow: hidden;
+      overflow-y: auto;
       position: relative;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: absolute;
-      inset: -40% auto auto -30%;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(94, 242, 255, 0.35), transparent 70%);
-      filter: blur(20px);
-      opacity: 0.9;
-      animation: drift 18s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    body::after {
-      inset: auto -30% -40% auto;
-      background: radial-gradient(circle, rgba(255, 209, 102, 0.28), transparent 70%);
-      animation-delay: -6s;
-    }
-
-    @keyframes drift {
-      0%,
-      100% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      50% {
-        transform: translate3d(40px, -30px, 0) scale(1.08);
-      }
+      padding: 40px 20px 60px;
     }
 
     .split {
       position: relative;
       display: grid;
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      width: min(1180px, 95vw);
-      min-height: 92vh;
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(12px);
-      background: rgba(12, 14, 30, 0.72);
-    }
-
-    .divider {
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      top: 50%;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(94, 242, 255, 0),
-        rgba(94, 242, 255, 0.8),
-        rgba(255, 209, 102, 0.8),
-        rgba(255, 209, 102, 0)
-      );
-      opacity: 0.7;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      width: min(1080px, 95vw);
+      min-height: auto;
     }
 
     .panel {
@@ -97,8 +48,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 20px;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      gap: 18px;
+      background: var(--panel);
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
     }
 
     .kicker {
@@ -116,7 +70,7 @@
       height: 10px;
       border-radius: 50%;
       background: var(--accent-2);
-      box-shadow: 0 0 12px rgba(94, 242, 255, 0.8);
+      box-shadow: 0 0 12px rgba(246, 196, 83, 0.6);
       animation: pulse 1.4s ease-in-out infinite;
     }
 
@@ -133,7 +87,7 @@
     }
 
     h1 {
-      font-size: clamp(34px, 4.2vw, 56px);
+      font-size: clamp(32px, 4vw, 48px);
       letter-spacing: 0.6px;
       line-height: 1.08;
     }
@@ -144,11 +98,18 @@
       line-height: 1.6;
     }
 
+    .wish {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
     .countdown {
-      background: var(--panel);
+      background: #f8fafc;
       padding: 20px 22px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--border);
       display: grid;
       gap: 12px;
       position: relative;
@@ -159,8 +120,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 60%);
-      opacity: 0.4;
+      background: radial-gradient(circle at top left, rgba(31, 122, 224, 0.12), transparent 60%);
+      opacity: 0.5;
       pointer-events: none;
     }
 
@@ -173,7 +134,7 @@
 
     .human {
       font-size: clamp(16px, 2vw, 20px);
-      color: #ffffff;
+      color: #0f172a;
       z-index: 1;
     }
 
@@ -189,8 +150,8 @@
     .chip {
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(9, 11, 23, 0.7);
+      border: 1px solid var(--border);
+      background: #f8fafc;
     }
 
     .status {
@@ -208,11 +169,10 @@
 </head>
 <body>
   <main class="split">
-    <div class="divider" aria-hidden="true"></div>
-
     <section class="panel" data-lang="sq">
       <div class="kicker"><span class="pulse"></span>Shqip</div>
       <h1>Gëzuar Vitin e Ri 🎉</h1>
+      <p class="wish">Qoftë një vit sa më i mbarë për ju dhe familjet tuaja.</p>
       <p class="subtitle">
         Numërim mbrapsht live deri më <strong>01 Janar, 00:00:00</strong> (sipas orës lokale).
       </p>
@@ -230,6 +190,7 @@
     <section class="panel" data-lang="en">
       <div class="kicker"><span class="pulse"></span>English</div>
       <h1>Happy New Year 🎊</h1>
+      <p class="wish">May it be a prosperous year for you and your families.</p>
       <p class="subtitle">
         Live countdown to <strong>January 1st, 00:00:00</strong> (based on local time).
       </p>
