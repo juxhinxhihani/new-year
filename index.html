@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gëzuar Vitin e Ri | Happy New Year</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+      --bg: #070812;
+      --panel: rgba(255, 255, 255, 0.08);
+      --accent: #ffd166;
+      --accent-2: #5ef2ff;
+      --muted: rgba(255, 255, 255, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1b1d3d 0%, #0b0d1f 38%, var(--bg) 70%);
+      color: #f8f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -30%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(94, 242, 255, 0.35), transparent 70%);
+      filter: blur(20px);
+      opacity: 0.9;
+      animation: drift 18s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    body::after {
+      inset: auto -30% -40% auto;
+      background: radial-gradient(circle, rgba(255, 209, 102, 0.28), transparent 70%);
+      animation-delay: -6s;
+    }
+
+    @keyframes drift {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(40px, -30px, 0) scale(1.08);
+      }
+    }
+
+    .split {
+      position: relative;
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      width: min(1180px, 95vw);
+      min-height: 92vh;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      background: rgba(12, 14, 30, 0.72);
+    }
+
+    .divider {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(94, 242, 255, 0),
+        rgba(94, 242, 255, 0.8),
+        rgba(255, 209, 102, 0.8),
+        rgba(255, 209, 102, 0)
+      );
+      opacity: 0.7;
+    }
+
+    .panel {
+      padding: clamp(26px, 6vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--muted);
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 12px rgba(94, 242, 255, 0.8);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(0.9);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: clamp(34px, 4.2vw, 56px);
+      letter-spacing: 0.6px;
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      font-size: clamp(15px, 1.8vw, 19px);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .countdown {
+      background: var(--panel);
+      padding: 20px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: grid;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 60%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .clock {
+      font-size: clamp(38px, 4.6vw, 54px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+
+    .human {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #ffffff;
+      z-index: 1;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(9, 11, 23, 0.7);
+    }
+
+    .status {
+      color: var(--muted);
+      line-height: 1.6;
+      min-height: 1.6em;
+    }
+
+    @media (max-width: 920px) {
+      .split {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="split">
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="panel" data-lang="sq">
+      <div class="kicker"><span class="pulse"></span>Shqip</div>
+      <h1>Gëzuar Vitin e Ri 🎉</h1>
+      <p class="subtitle">
+        Numërim mbrapsht live deri më <strong>01 Janar, 00:00:00</strong> (sipas orës lokale).
+      </p>
+      <div class="countdown">
+        <div class="clock" data-clock>00:00:00</div>
+        <div class="human" data-human>0 orë 0 minuta 0 sekonda</div>
+      </div>
+      <div class="meta">
+        <span class="chip">LIVE</span>
+        <span class="chip" data-year-chip></span>
+      </div>
+      <p class="status" data-status></p>
+    </section>
+
+    <section class="panel" data-lang="en">
+      <div class="kicker"><span class="pulse"></span>English</div>
+      <h1>Happy New Year 🎊</h1>
+      <p class="subtitle">
+        Live countdown to <strong>January 1st, 00:00:00</strong> (based on local time).
+      </p>
+      <div class="countdown">
+        <div class="clock" data-clock>00:00:00</div>
+        <div class="human" data-human>0 hours 0 minutes 0 seconds</div>
+      </div>
+      <div class="meta">
+        <span class="chip">LIVE</span>
+        <span class="chip" data-year-chip></span>
+      </div>
+      <p class="status" data-status></p>
+    </section>
+  </main>
+
+  <script>
+    const panels = Array.from(document.querySelectorAll(".panel"));
+
+    const translations = {
+      sq: {
+        running: (hours, minutes, seconds) => `${hours} orë ${minutes} minuta ${seconds} sekonda`,
+        done: "00:00:00 viti i ri erdhi, gezuar🎉",
+        status: (year) => `Po numërojmë mbrapsht për Vitin e Ri ${year}.`,
+        yearChip: (year) => `Synimi ${year}`,
+      },
+      en: {
+        running: (hours, minutes, seconds) => `${hours} hours ${minutes} minutes ${seconds} seconds`,
+        done: "00:00:00 the new year is here, cheers🎉",
+        status: (year) => `Counting down to New Year ${year}.`,
+        yearChip: (year) => `Target ${year}`,
+      },
+    };
+
+    const pad = (value) => String(value).padStart(2, "0");
+
+    const update = () => {
+      const now = new Date();
+      const nextJan = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0);
+      const isNewYearDay = now.getMonth() === 0 && now.getDate() === 1;
+      const target = nextJan;
+      const diff = target - now;
+
+      const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+
+      panels.forEach((panel) => {
+        const lang = panel.dataset.lang;
+        const strings = translations[lang];
+        const clock = panel.querySelector("[data-clock]");
+        const human = panel.querySelector("[data-human]");
+        const status = panel.querySelector("[data-status]");
+        const yearChip = panel.querySelector("[data-year-chip]");
+
+        if (isNewYearDay) {
+          clock.textContent = "00:00:00";
+          human.textContent = strings.done;
+          status.textContent = "";
+          yearChip.textContent = strings.yearChip(now.getFullYear());
+          return;
+        }
+
+        clock.textContent = clockValue;
+        human.textContent = strings.running(hours, minutes, seconds);
+        status.textContent = strings.status(target.getFullYear());
+        yearChip.textContent = strings.yearChip(target.getFullYear());
+      });
+
+      if (diff <= 0 || isNewYearDay) {
+        clearInterval(timer);
+      }
+    };
+
+    update();
+    const timer = setInterval(update, 250);
+  </script>
+</body>
+</html>
