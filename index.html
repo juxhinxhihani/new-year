@@ -292,9 +292,8 @@
         <span class="pulse"></span>
         Festë, dritë dhe dashuri
       </div>
-      <h1>Gëzuar Vitin e Ri dhe Krishtlindjet 🎄✨</h1>
+      <h1 data-heading>Gëzuar Vitin e Ri🎄✨</h1>
       <p class="subtitle">Një urim i ngrohtë për një vit të ri plot mirësi.</p>
-      <p class="holiday-note">Gëzuar Krishtlindjet &amp; Vitin e Ri</p>
       <p class="wish" data-wish>
         Po e përcjellim edhe këtë vit, për të nisur një të ri. Ndaj uroj që ky vit i ri t’ju sjellë plot shëndet,
         qetësi dhe dashuri, me më shumë buzëqeshje, momente të bukura dhe plot suksese.
@@ -309,11 +308,22 @@
 
   <script>
     const panel = document.querySelector(".panel");
+    const heading = document.querySelector("[data-heading]");
     const intro = document.querySelector("[data-intro]");
     const introCount = document.querySelector("[data-intro-count]");
     const introGif = document.querySelector("[data-intro-gif]");
 
     const pad = (value) => String(value).padStart(2, "0");
+
+    const updateHeading = () => {
+      if (!heading) return;
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name");
+      const trimmedName = name ? name.trim() : "";
+      heading.textContent = trimmedName
+        ? `Gëzuar Vitin e Ri ${trimmedName}🎄✨`
+        : "Gëzuar Vitin e Ri🎄✨";
+    };
 
     const update = () => {
       const now = new Date();
@@ -345,6 +355,7 @@
       }
     };
 
+    updateHeading();
     update();
     const timer = setInterval(update, 250);
 
