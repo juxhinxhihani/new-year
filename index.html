@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gëzuar Vitin e Ri | Happy New Year</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+      --bg: #070812;
+      --panel: rgba(255, 255, 255, 0.08);
+      --accent: #ffd166;
+      --accent-2: #5ef2ff;
+      --muted: rgba(255, 255, 255, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0c0e1c;
+      color: #f8f7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .split {
+      position: relative;
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      width: min(980px, 95vw);
+      min-height: 92vh;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #121426;
+    }
+
+    .divider {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 50%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .panel {
+      padding: clamp(26px, 6vw, 54px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      background: #151833;
+    }
+
+    h1 {
+      font-size: clamp(34px, 4.2vw, 56px);
+      letter-spacing: 0.6px;
+      line-height: 1.08;
+    }
+
+    .countdown {
+      background: #0d0f22;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: grid;
+      gap: 10px;
+    }
+
+    .clock {
+      font-size: clamp(38px, 4.6vw, 54px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+
+    .human {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #ffffff;
+    }
+
+    .message {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: clamp(15px, 1.8vw, 18px);
+    }
+
+    .footer {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .split {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="split">
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="panel" data-lang="sq">
+      <h1>Gëzuar Vitin e Ri 🎉</h1>
+      <p class="message">Qoftë një vit sa më i mbarë për ju dhe familjet tuaja.</p>
+      <div class="countdown">
+        <div class="clock" data-clock>00:00:00</div>
+        <div class="human" data-human>0 orë 0 minuta 0 sekonda</div>
+      </div>
+      <div class="footer">
+        <span>Juxhin Xhihani</span>
+        <span data-year></span>
+      </div>
+    </section>
+
+    <section class="panel" data-lang="en">
+      <h1>Happy New Year 🎊</h1>
+      <p class="message">May it be a year filled with goodness for you and your families.</p>
+      <div class="countdown">
+        <div class="clock" data-clock>00:00:00</div>
+        <div class="human" data-human>0 hours 0 minutes 0 seconds</div>
+      </div>
+      <div class="footer">
+        <span>Juxhin Xhihani</span>
+        <span data-year></span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const panels = Array.from(document.querySelectorAll(".panel"));
+
+    const translations = {
+      sq: {
+        running: (hours, minutes, seconds) => `${hours} orë ${minutes} minuta ${seconds} sekonda`,
+        done: "00:00:00 viti i ri erdhi, gezuar🎉",
+      },
+      en: {
+        running: (hours, minutes, seconds) => `${hours} hours ${minutes} minutes ${seconds} seconds`,
+        done: "00:00:00 the new year is here, cheers🎉",
+      },
+    };
+
+    const pad = (value) => String(value).padStart(2, "0");
+
+    const update = () => {
+      const now = new Date();
+      const currentYearStart = new Date(now.getFullYear(), 0, 1, 0, 0, 0);
+      const nextJan = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0);
+      const endOfNewYearDay = new Date(now.getFullYear(), 0, 2, 0, 0, 0);
+      const isNewYearDay = now >= currentYearStart && now < endOfNewYearDay;
+      const diff = nextJan - now;
+
+      const totalSeconds = Math.max(0, Math.floor(diff / 1000));
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+
+      panels.forEach((panel) => {
+        const lang = panel.dataset.lang;
+        const strings = translations[lang];
+        const clock = panel.querySelector("[data-clock]");
+        const human = panel.querySelector("[data-human]");
+        const year = panel.querySelector("[data-year]");
+
+        if (isNewYearDay) {
+          clock.textContent = "00:00:00";
+          human.textContent = strings.done;
+          year.textContent = now.getFullYear();
+          return;
+        }
+
+        clock.textContent = clockValue;
+        human.textContent = strings.running(hours, minutes, seconds);
+        year.textContent = target.getFullYear();
+      });
+
+      if (diff <= 0 || isNewYearDay) {
+        clearInterval(timer);
+      }
+    };
+
+    update();
+    const timer = setInterval(update, 250);
+  </script>
+</body>
+</html>
