@@ -27,6 +27,7 @@
       background: var(--bg);
       color: #0f172a;
       display: flex;
+      flex-direction: column;
       align-items: flex-start;
       justify-content: center;
       overflow-y: auto;
@@ -160,6 +161,14 @@
       min-height: 1.6em;
     }
 
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      width: min(1080px, 95vw);
+    }
+
     @media (max-width: 920px) {
       .split {
         min-height: auto;
@@ -170,41 +179,24 @@
 <body>
   <main class="split">
     <section class="panel" data-lang="sq">
-      <div class="kicker"><span class="pulse"></span>Shqip</div>
       <h1>Gëzuar Vitin e Ri 🎉</h1>
       <p class="wish">Qoftë një vit sa më i mbarë për ju dhe familjet tuaja.</p>
-      <p class="subtitle">
-        Numërim mbrapsht live deri më <strong>01 Janar, 00:00:00</strong> (sipas orës lokale).
-      </p>
       <div class="countdown">
         <div class="clock" data-clock>00:00:00</div>
         <div class="human" data-human>0 orë 0 minuta 0 sekonda</div>
       </div>
-      <div class="meta">
-        <span class="chip">LIVE</span>
-        <span class="chip" data-year-chip></span>
-      </div>
-      <p class="status" data-status></p>
     </section>
 
     <section class="panel" data-lang="en">
-      <div class="kicker"><span class="pulse"></span>English</div>
       <h1>Happy New Year 🎊</h1>
       <p class="wish">May it be a prosperous year for you and your families.</p>
-      <p class="subtitle">
-        Live countdown to <strong>January 1st, 00:00:00</strong> (based on local time).
-      </p>
       <div class="countdown">
         <div class="clock" data-clock>00:00:00</div>
         <div class="human" data-human>0 hours 0 minutes 0 seconds</div>
       </div>
-      <div class="meta">
-        <span class="chip">LIVE</span>
-        <span class="chip" data-year-chip></span>
-      </div>
-      <p class="status" data-status></p>
     </section>
   </main>
+  <footer class="footer">Juxhin Xhihani</footer>
 
   <script>
     const panels = Array.from(document.querySelectorAll(".panel"));
@@ -213,14 +205,10 @@
       sq: {
         running: (hours, minutes, seconds) => `${hours} orë ${minutes} minuta ${seconds} sekonda`,
         done: "00:00:00 viti i ri erdhi, gezuar🎉",
-        status: (year) => `Po numërojmë mbrapsht për Vitin e Ri ${year}.`,
-        yearChip: (year) => `Synimi ${year}`,
       },
       en: {
         running: (hours, minutes, seconds) => `${hours} hours ${minutes} minutes ${seconds} seconds`,
         done: "00:00:00 the new year is here, cheers🎉",
-        status: (year) => `Counting down to New Year ${year}.`,
-        yearChip: (year) => `Target ${year}`,
       },
     };
 
@@ -245,21 +233,15 @@
         const strings = translations[lang];
         const clock = panel.querySelector("[data-clock]");
         const human = panel.querySelector("[data-human]");
-        const status = panel.querySelector("[data-status]");
-        const yearChip = panel.querySelector("[data-year-chip]");
 
         if (isNewYearDay) {
           clock.textContent = "00:00:00";
           human.textContent = strings.done;
-          status.textContent = "";
-          yearChip.textContent = strings.yearChip(now.getFullYear());
           return;
         }
 
         clock.textContent = clockValue;
         human.textContent = strings.running(hours, minutes, seconds);
-        status.textContent = strings.status(target.getFullYear());
-        yearChip.textContent = strings.yearChip(target.getFullYear());
       });
 
       if (diff <= 0 || isNewYearDay) {
