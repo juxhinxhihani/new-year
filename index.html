@@ -248,7 +248,7 @@
   <main class="split">
     <section class="panel" data-lang="sq">
       <h1>Gëzuar Vitin e Ri 🎉</h1>
-      <p class="wish">Qoftë një vit sa më i mbarë për ju dhe familjet tuaja.</p>
+      <p class="wish" data-wish>Qoftë një vit sa më i mbarë për ju dhe familjet tuaja.</p>
       <div class="countdown">
         <div class="clock" data-clock>00:00:00</div>
         <div class="human" data-human>0 orë 0 minuta 0 sekonda</div>
@@ -257,7 +257,7 @@
 
     <section class="panel" data-lang="en">
       <h1>Happy New Year 🎊</h1>
-      <p class="wish">May it be a prosperous year for you and your families.</p>
+      <p class="wish" data-wish>May it be a prosperous year for you and your families.</p>
       <div class="countdown">
         <div class="clock" data-clock>00:00:00</div>
         <div class="human" data-human>0 hours 0 minutes 0 seconds</div>
@@ -268,22 +268,36 @@
 
   <script>
     const panels = Array.from(document.querySelectorAll(".panel"));
+    const wishes = Array.from(document.querySelectorAll("[data-wish]"));
     const intro = document.querySelector("[data-intro]");
     const introCount = document.querySelector("[data-intro-count]");
     const introGif = document.querySelector("[data-intro-gif]");
 
     const translations = {
-      sq: {
-        running: (hours, minutes, seconds) => `${hours} orë ${minutes} minuta ${seconds} sekonda`,
-        done: "00:00:00 viti i ri erdhi, gezuar🎉",
-      },
       en: {
         running: (hours, minutes, seconds) => `${hours} hours ${minutes} minutes ${seconds} seconds`,
         done: "00:00:00 the new year is here, cheers🎉",
+        wish: (name) => `May it be a prosperous year for you${name} and your family.`,
+      },
+      sq: {
+        running: (hours, minutes, seconds) => `${hours} orë ${minutes} minuta ${seconds} sekonda`,
+        done: "00:00:00 viti i ri erdhi, gezuar🎉",
+        wish: (name) => `Qoftë një vit sa më i mbarë për ty${name} dhe familjen tuaj.`,
       },
     };
 
     const pad = (value) => String(value).padStart(2, "0");
+
+    const rawName = new URLSearchParams(window.location.search).get("name");
+    const cleanedName = rawName ? rawName.trim() : "";
+    const nameSuffix = cleanedName ? `, ${cleanedName}` : "";
+
+    wishes.forEach((wish) => {
+      const lang = wish.closest(".panel")?.dataset.lang;
+      const strings = lang ? translations[lang] : null;
+      if (!strings?.wish) return;
+      wish.textContent = strings.wish(nameSuffix);
+    });
 
     const update = () => {
       const now = new Date();
