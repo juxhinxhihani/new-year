@@ -318,8 +318,17 @@
     const updateHeading = () => {
       if (!heading) return;
       const params = new URLSearchParams(window.location.search);
-      const name = params.get("name");
-      const trimmedName = name ? name.trim() : "";
+      const queryName = params.get("name");
+      const rawPath = window.location.pathname.replace(/\/+$/, "");
+      const lastSegment = rawPath.split("/").filter(Boolean).pop();
+      const decodedSegment = lastSegment ? decodeURIComponent(lastSegment) : "";
+      const normalizedSegment = decodedSegment.replace(/\.html$/i, "");
+      const pathName =
+        normalizedSegment && normalizedSegment.toLowerCase() !== "index"
+          ? normalizedSegment
+          : "";
+      const preferredName = queryName || pathName;
+      const trimmedName = preferredName ? preferredName.trim() : "";
       heading.textContent = trimmedName
         ? `Gëzuar Vitin e Ri ${trimmedName}🎄✨`
         : "Gëzuar Vitin e Ri🎄✨";
