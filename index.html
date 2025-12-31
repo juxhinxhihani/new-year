@@ -35,6 +35,10 @@
       padding: 40px 20px 60px;
     }
 
+    body.is-intro {
+      overflow: hidden;
+    }
+
     .split {
       position: relative;
       display: grid;
@@ -169,6 +173,58 @@
       width: min(1080px, 95vw);
     }
 
+    .intro {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #1f7ae0 0%, #0f172a 60%, #0b1120 100%);
+      color: #f8fafc;
+      z-index: 10;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .intro.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro__content {
+      display: grid;
+      gap: 20px;
+      place-items: center;
+      padding: 40px;
+    }
+
+    .intro__count {
+      font-size: clamp(64px, 12vw, 140px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+    }
+
+    .intro__gif {
+      width: min(360px, 70vw);
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .intro__gif.is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .intro__label {
+      font-size: 16px;
+      color: rgba(248, 250, 252, 0.85);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 920px) {
       .split {
         min-height: auto;
@@ -177,6 +233,18 @@
   </style>
 </head>
 <body>
+  <div class="intro" data-intro>
+    <div class="intro__content">
+      <div class="intro__count" data-intro-count>3</div>
+      <img
+        class="intro__gif"
+        data-intro-gif
+        src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+        alt="Fireworks celebration"
+      />
+      <div class="intro__label">Get ready for the celebration</div>
+    </div>
+  </div>
   <main class="split">
     <section class="panel" data-lang="sq">
       <h1>Gëzuar Vitin e Ri 🎉</h1>
@@ -200,6 +268,9 @@
 
   <script>
     const panels = Array.from(document.querySelectorAll(".panel"));
+    const intro = document.querySelector("[data-intro]");
+    const introCount = document.querySelector("[data-intro-count]");
+    const introGif = document.querySelector("[data-intro-gif]");
 
     const translations = {
       sq: {
@@ -251,6 +322,34 @@
 
     update();
     const timer = setInterval(update, 250);
+
+    const runIntro = () => {
+      if (!intro || !introCount || !introGif) return;
+      document.body.classList.add("is-intro");
+      let count = 3;
+      introCount.textContent = count;
+
+      const showFireworks = () => {
+        introCount.textContent = "";
+        introGif.classList.add("is-visible");
+        setTimeout(() => {
+          intro.classList.add("is-hidden");
+          document.body.classList.remove("is-intro");
+        }, 2200);
+      };
+
+      const countdownTimer = setInterval(() => {
+        count -= 1;
+        if (count > 0) {
+          introCount.textContent = count;
+          return;
+        }
+        clearInterval(countdownTimer);
+        showFireworks();
+      }, 1000);
+    };
+
+    window.addEventListener("load", runIntro);
   </script>
 </body>
 </html>
