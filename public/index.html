@@ -334,32 +334,32 @@
 
     const update = () => {
       const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 1, 0, 0, 0);
       const nextJan = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0);
       const isNewYearDay = now.getMonth() === 0 && now.getDate() === 1;
-      const target = nextJan;
-      const diff = target - now;
+      const clock = panel.querySelector("[data-clock]");
+      const human = panel.querySelector("[data-human]");
 
+      if (isNewYearDay) {
+        const elapsedSeconds = Math.max(0, Math.floor((now - startOfYear) / 1000));
+        const hours = Math.floor(elapsedSeconds / 3600);
+        const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+        const seconds = elapsedSeconds % 60;
+        const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+        clock.textContent = clockValue;
+        human.textContent = `${hours} orë ${minutes} minuta ${seconds} sekonda në këtë vit të ri`;
+        return;
+      }
+
+      const diff = nextJan - now;
       const totalSeconds = Math.max(0, Math.floor(diff / 1000));
       const hours = Math.floor(totalSeconds / 3600);
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
       const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-      const clock = panel.querySelector("[data-clock]");
-      const human = panel.querySelector("[data-human]");
-
-      if (isNewYearDay) {
-        clock.textContent = "00:00:00";
-        human.textContent = "00:00:00 viti i ri erdhi, gëzuar 🎉";
-        return;
-      }
-
       clock.textContent = clockValue;
       human.textContent = `${hours} orë ${minutes} minuta ${seconds} sekonda`;
-
-      if (diff <= 0 || isNewYearDay) {
-        clearInterval(timer);
-      }
     };
 
     updateHeading();
