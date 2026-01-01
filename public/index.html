@@ -356,7 +356,7 @@
       </p>
       <div class="countdown">
         <div class="clock" data-clock>00:00:00</div>
-        <div class="human" data-human>0 orë 0 minuta 0 sekonda</div>
+        <div class="human" data-human>0 ore 0 minuta 0 sekonda ne 2026</div>
       </div>
     </section>
   </main>
@@ -403,7 +403,7 @@
         const seconds = elapsedSeconds % 60;
         const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
         clock.textContent = clockValue;
-        human.textContent = `${hours} orë ${minutes} minuta ${seconds} sekonda në këtë vit të ri`;
+        human.textContent = `${hours} ore ${minutes} minuta ${seconds} sekonda ne 2026`;
         return;
       }
 
@@ -415,7 +415,7 @@
 
       const clockValue = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
       clock.textContent = clockValue;
-      human.textContent = `${hours} orë ${minutes} minuta ${seconds} sekonda`;
+      human.textContent = `${hours} ore ${minutes} minuta ${seconds} sekonda ne 2026`;
     };
 
     updateHeading();
