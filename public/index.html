@@ -15,6 +15,26 @@
       --muted: #4b5563;
       --border: #f2e8d5;
       --deep: #0f172a;
+      --festive-1: #ff2e63;
+      --festive-2: #ff7a18;
+      --festive-3: #ffcf33;
+      --festive-4: #24d17e;
+      --festive-5: #14b8a6;
+      --festive-6: #3b82f6;
+      --festive-7: #6366f1;
+      --festive-8: #a855f7;
+      --festive-9: #ec4899;
+      --festive-10: #f43f5e;
+      --festive-11: #fb7185;
+      --festive-12: #f97316;
+      --festive-13: #facc15;
+      --festive-14: #22c55e;
+      --festive-15: #06b6d4;
+      --festive-16: #0ea5e9;
+      --festive-17: #8b5cf6;
+      --festive-18: #d946ef;
+      --festive-19: #f472b6;
+      --festive-20: #fb7185;
     }
 
     * {
@@ -31,14 +51,14 @@
         radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
         linear-gradient(
           135deg,
-          #f43f5e,
-          #fb7185,
-          #f97316,
-          #facc15,
-          #22c55e
+          var(--festive-1),
+          var(--festive-2),
+          var(--festive-3),
+          var(--festive-4),
+          var(--festive-5)
         );
-      background-size: 120% 120%, 120% 120%, 120% 120%, 300% 300%;
-      animation: festiveGlow 5s ease-in-out infinite;
+      background-size: 120% 120%, 120% 120%, 120% 120%, 320% 320%;
+      animation: festiveGlow 100s ease-in-out infinite;
       color: var(--deep);
       display: flex;
       flex-direction: column;
@@ -138,56 +158,296 @@
           radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
           linear-gradient(
             135deg,
-            #f43f5e,
-            #fb7185,
-            #f97316,
-            #facc15,
-            #22c55e
+            var(--festive-1),
+            var(--festive-2),
+            var(--festive-3),
+            var(--festive-4),
+            var(--festive-5)
+          );
+      }
+      5% {
+        background-position: 0% 0%, 14% 18%, 86% 28%, 12% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-2),
+            var(--festive-3),
+            var(--festive-4),
+            var(--festive-5),
+            var(--festive-6)
+          );
+      }
+      10% {
+        background-position: 0% 0%, 18% 26%, 82% 33%, 24% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-3),
+            var(--festive-4),
+            var(--festive-5),
+            var(--festive-6),
+            var(--festive-7)
+          );
+      }
+      15% {
+        background-position: 0% 0%, 22% 34%, 78% 38%, 36% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-4),
+            var(--festive-5),
+            var(--festive-6),
+            var(--festive-7),
+            var(--festive-8)
+          );
+      }
+      20% {
+        background-position: 0% 0%, 26% 42%, 74% 43%, 48% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-5),
+            var(--festive-6),
+            var(--festive-7),
+            var(--festive-8),
+            var(--festive-9)
           );
       }
       25% {
-        background-position: 0% 0%, 15% 25%, 85% 35%, 50% 50%;
+        background-position: 0% 0%, 30% 50%, 70% 48%, 60% 50%;
         background-image:
           radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
           radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
           radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
           linear-gradient(
             135deg,
-            #38bdf8,
-            #0ea5e9,
-            #6366f1,
-            #a855f7,
-            #ec4899
+            var(--festive-6),
+            var(--festive-7),
+            var(--festive-8),
+            var(--festive-9),
+            var(--festive-10)
+          );
+      }
+      30% {
+        background-position: 0% 0%, 34% 55%, 66% 50%, 72% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-7),
+            var(--festive-8),
+            var(--festive-9),
+            var(--festive-10),
+            var(--festive-11)
+          );
+      }
+      35% {
+        background-position: 0% 0%, 38% 60%, 62% 52%, 84% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-8),
+            var(--festive-9),
+            var(--festive-10),
+            var(--festive-11),
+            var(--festive-12)
+          );
+      }
+      40% {
+        background-position: 0% 0%, 42% 62%, 58% 54%, 96% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-9),
+            var(--festive-10),
+            var(--festive-11),
+            var(--festive-12),
+            var(--festive-13)
+          );
+      }
+      45% {
+        background-position: 0% 0%, 38% 58%, 62% 58%, 84% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-10),
+            var(--festive-11),
+            var(--festive-12),
+            var(--festive-13),
+            var(--festive-14)
           );
       }
       50% {
-        background-position: 0% 0%, 20% 35%, 80% 40%, 100% 50%;
+        background-position: 0% 0%, 34% 54%, 66% 62%, 72% 50%;
         background-image:
           radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
           radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
           radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
           linear-gradient(
             135deg,
-            #14b8a6,
-            #10b981,
-            #84cc16,
-            #f59e0b,
-            #f97316
+            var(--festive-11),
+            var(--festive-12),
+            var(--festive-13),
+            var(--festive-14),
+            var(--festive-15)
+          );
+      }
+      55% {
+        background-position: 0% 0%, 30% 50%, 70% 66%, 60% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-12),
+            var(--festive-13),
+            var(--festive-14),
+            var(--festive-15),
+            var(--festive-16)
+          );
+      }
+      60% {
+        background-position: 0% 0%, 26% 45%, 74% 68%, 48% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-13),
+            var(--festive-14),
+            var(--festive-15),
+            var(--festive-16),
+            var(--festive-17)
+          );
+      }
+      65% {
+        background-position: 0% 0%, 22% 40%, 78% 66%, 36% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-14),
+            var(--festive-15),
+            var(--festive-16),
+            var(--festive-17),
+            var(--festive-18)
+          );
+      }
+      70% {
+        background-position: 0% 0%, 18% 35%, 82% 62%, 24% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-15),
+            var(--festive-16),
+            var(--festive-17),
+            var(--festive-18),
+            var(--festive-19)
           );
       }
       75% {
-        background-position: 0% 0%, 25% 45%, 75% 55%, 50% 50%;
+        background-position: 0% 0%, 14% 30%, 86% 56%, 12% 50%;
         background-image:
           radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
           radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
           radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
           linear-gradient(
             135deg,
-            #c026d3,
-            #db2777,
-            #f43f5e,
-            #f97316,
-            #fbbf24
+            var(--festive-16),
+            var(--festive-17),
+            var(--festive-18),
+            var(--festive-19),
+            var(--festive-20)
+          );
+      }
+      80% {
+        background-position: 0% 0%, 18% 26%, 82% 48%, 24% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-17),
+            var(--festive-18),
+            var(--festive-19),
+            var(--festive-20),
+            var(--festive-1)
+          );
+      }
+      85% {
+        background-position: 0% 0%, 22% 22%, 78% 40%, 36% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-18),
+            var(--festive-19),
+            var(--festive-20),
+            var(--festive-1),
+            var(--festive-2)
+          );
+      }
+      90% {
+        background-position: 0% 0%, 26% 18%, 74% 32%, 48% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-19),
+            var(--festive-20),
+            var(--festive-1),
+            var(--festive-2),
+            var(--festive-3)
+          );
+      }
+      95% {
+        background-position: 0% 0%, 30% 14%, 70% 26%, 60% 50%;
+        background-image:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 45%),
+          radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.12), transparent 40%),
+          radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+          linear-gradient(
+            135deg,
+            var(--festive-20),
+            var(--festive-1),
+            var(--festive-2),
+            var(--festive-3),
+            var(--festive-4)
           );
       }
       100% {
@@ -198,11 +458,11 @@
           radial-gradient(circle at 90% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
           linear-gradient(
             135deg,
-            #f43f5e,
-            #fb7185,
-            #f97316,
-            #facc15,
-            #22c55e
+            var(--festive-1),
+            var(--festive-2),
+            var(--festive-3),
+            var(--festive-4),
+            var(--festive-5)
           );
       }
     }
